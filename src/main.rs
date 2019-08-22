@@ -1,13 +1,18 @@
 extern crate rand;
+extern crate ansi_term;
+
+use ansi_term::{Style};
+
 
 const PASSCODE_LEN: usize = 8;
 
 fn main() {
 
+    let style = Style::new().bold();
     for i in (0..100) {
         let mut password = gen_string(PASSCODE_LEN);
         password.insert(PASSCODE_LEN/2, '-');
-        println!("{:?}", password);
+        println!("{}", style.paint( password));
     }
 }
 
